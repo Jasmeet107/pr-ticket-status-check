@@ -13,8 +13,8 @@ async function run() {
     var jira = new JiraApi({
       protocol: 'https',
       host: 'https://notarize.atlassian.net/',
-      username: jiraUser,
-      password: jiraToken,
+      username: inputs.jiraUser,
+      password: inputs.jiraToken,
       apiVersion: '2',
       strictSSL: true
     });
