@@ -1,13 +1,15 @@
-name: 'Wait'
-description: 'Wait a designated number of milliseconds'
+name: 'Check PR Title'
+description: 'Check PR title is correct'
 inputs:
-  milliseconds:  # id of input
-    description: 'number of milliseconds to wait'
+  repo-token:
+    description: 'The GITHUB_TOKEN secret'
     required: true
-    default: '1000'
-outputs:
-  time: # output will be available to future steps 
-    description: 'The message to output'
+  jira-token:
+    description: 'JIRA token'
+    required: true
+  jira-user:
+    description: 'JIRA username'
+    required: true
 runs:
   using: 'node12'
   main: 'index.js'
