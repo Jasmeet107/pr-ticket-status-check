@@ -38,10 +38,15 @@ async function run() {
     const jiraTicketKey = matches[0];
     core.info(`Jira Ticket Key: ${jiraTicketKey}`);
     const issue = await jira.findIssue(jiraTicketKey);
+    jira.findIssue(jiraTicketKey).then(function(issue) {
+      core.info(issue);
+      core.info(issue.fields.status);
+      core.info(issue.fields.status.name);
+    })
     core.info(issue);
     core.info(issue.fields);
     core.info(issue.fields.status);
-    if (["In Review", "In Progress", "Done", "Staging"].includes(issue.fields.status)) {
+    if (["In Review", "In Progress", "Done", "Staging"].includes(issue.fields.status.name)) {
       return;
     }
     core.setFailed("JIRA ticket does not have correct status");
